@@ -1,0 +1,19 @@
+<div class="flex space-x-4 mt-2">
+    <div class="w-64">
+        <ul>
+            <li>
+                <a routerLink="/">All</a>
+            </li>
+            @for (item of category(); track $index) {
+                <li>
+                    <a routerLink="/" [queryParams]="{category_id: item.id}">{{ item.name }}</a>
+                </li>
+            }
+        </ul>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+        @for (product of products(); track $index) {
+            <app-product [product]="product" (addToCart)="addToCart($event)"/>
+        }
+    </div>
+</div>
